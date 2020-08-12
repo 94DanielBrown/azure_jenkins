@@ -48,28 +48,29 @@ resource "azurerm_network_security_group" "main" {
 # Allow SSH access
 resource "azurerm_network_security_rule" "ssh_access" {
   name = "ssh-access-rule"
-  security_group_names = azurerm_network_security_group.main.name
-  type = "Inbound"
-  action = "Allow"
+  resource_group_name = var.rgn
+  network_security_group_name = azurerm_network_security_group.main.name
+  direction = "Inbound"
+  access = "Allow"
   source_port_range = "*"
   destination_port_range = "22"
   protocol = "TCP"
   priority = 200
   source_address_prefix = var.allowed_ips
-  destination_addrress_prefix = var.network_address
+  destination_address_prefix = sort(var.network_address)[0] 
 }
 
 # Allow access to the jenkins instance
 resource "azurerm_network_security_rule" "jenkins_access" {
   name = "jenkins-access-rule"
-
-  security_group_names = azurerm_network_security_group.main.name
-  type = "Inbound"
-  action = "Allow"
+  resource_group_name = var.rgn
+  network_security_group_name = azurerm_network_security_group.main.name
+  direction = "Inbound"
+  access = "Allow"
   source_port_range = "*"
   destination_port_range = "8090"
   protocol = "TCP"
   priority = 205
   source_address_prefix = var.allowed_ips
-  destination_addrress_prefix = var.network_address
+  destination_address_prefix = sort(var.network_address)[0] 
 }

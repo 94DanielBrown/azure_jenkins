@@ -1,0 +1,25 @@
+---
+# Infrastructure
+- name: Create infrastructure
+  hosts: localhost
+  roles:
+    - role: install_dynamic_inventory
+    - role: call_terraform
+
+# Common server configuration
+# name: Config server
+# hosts: all
+# remote_user: azure_user
+# become: True
+# roles:
+#   - role: user
+#   - role: server_common
+#   - role: install_azure_cli
+#
+# Install jenkins
+# name: Install jenkins
+# hosts: all
+# remote_user: azure_user
+# become: True
+# roles:
+# - role: install_jenkins

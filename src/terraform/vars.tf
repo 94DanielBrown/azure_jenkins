@@ -25,12 +25,22 @@ variable "storage_account_replication" {
 }
 
 # Networking
+variable  "network_address" {
+  description = "Ip address range for the virtual network"
+  default = ["10.15.0.0/16"]
+}
 
+variable "subnet_address" {
+  description = "Ip address range for the subnet"
+  default = ["10.15.1.0/24"]
+}
 
+variable "allowed_ips" {
+  description = "Set the ip range which will be allowed to access the jenkins instance"
+  default = "0.0.0.0/0"
+}
 
-
-
-# Image
+# Compute 
 variable "image_publisher" {
   description = "The publisher oh the OS image used to host jenkins "
   default = "OpenLogic"
@@ -45,5 +55,19 @@ variable "image_version" {
   description = "The version of the OS used to host jenkins"
   default = "latest"
 }
+
+variable "image_sku" {
+  description = ""
+  default = "7.5"
+}
+
+variable "vm_size" {
+  description = "The size of the VM to provision"
+  default = "Standard_DS1_v2"
+}
+
+
+
+
 
 

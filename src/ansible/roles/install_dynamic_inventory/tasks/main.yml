@@ -1,0 +1,14 @@
+---
+- name: Create directory for dynamic inventory
+  file:
+    path: $HOME/inventory
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: 0700
+
+- name: Copy dynamic inventory file
+  copy: 
+    src: azure_rm.py
+    dest: "{{ ansible_env.HOME }}/inventory/azure_rm.py"
+    mode: 0700
