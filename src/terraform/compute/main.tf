@@ -20,14 +20,21 @@ resource "azurerm_virtual_machine" "main" {
   }
 
   os_profile {
-    computer_name = "jenkins"
-    admin_username = "testadmin"
-    admin_password = "Password1234!"
+    computer_name = "vm-jenkins" 
+    admin_username = var.admin_username
+    #    admin_password = "Password1234!"
   }
 
   os_profile_linux_config {
-    disable_password_authentication = false
+    disable_password_authentication = true 
+    
+    ssh_keys {
+    path = "/home/${var.admin_username}/.ssh/authorized_keys"
+    key_data = file("~/.az/pem/test_keys.pub")
+    }
+
   }
+
 
   tags = var.default_tags
 

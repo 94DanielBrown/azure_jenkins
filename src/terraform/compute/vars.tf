@@ -9,4 +9,4 @@ variable "image_offer" {}
 variable "image_sku" {}
 variable "image_version" {}
 variable "default_tags" {}
-
+variable "admin_username" {}

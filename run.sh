@@ -1,7 +1,7 @@
 #!/bin/sh
 #Set key pair used to access instance, to be used by ansible
-SUBSCRIPTION="personal"
-AZ_REGION="north-europe"
+SUBSCRIPTION="test"
+AZ_REGION="key"
 KEY_NAME=$SUBSCRIPTION"_"$AZ_REGION
 PEM_LOCATION="$HOME/.az/pem/$KEY_NAME.pem"
 
@@ -19,6 +19,6 @@ export TFSTATE_FILE="$BASEDIR/src/terraform/terraform.tfstate"
 
 # Runs ansible
 ansible-playbook -i "$DYNAMIC_INVENTORY" ./src/ansible/jenkins_start.yml \
-        # Set the default user on the target servers for ansible to run as
-        --user "azure_user" \
-        --key-file "$PEM_LOCATION"
+# Set the default user on the target servers for ansible to run as
+--user "azure_user" \
+--key-file "$PEM_LOCATION"

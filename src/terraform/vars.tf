@@ -66,8 +66,10 @@ variable "vm_size" {
   default = "Standard_DS1_v2"
 }
 
+variable "key_name" {}
 
-
-
-
+variable "admin_username" {
+  description = "Username of the vm admin"
+  default = "azure_user"
+}
 

@@ -54,6 +54,7 @@ module "compute" {
   image_sku = var.image_sku
   vm_size = var.vm_size
   default_tags = var.default_tags
+  admin_username = var.admin_username
 }
 
 
