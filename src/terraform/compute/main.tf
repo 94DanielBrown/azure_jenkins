@@ -30,7 +30,7 @@ resource "azurerm_virtual_machine" "main" {
     
     ssh_keys {
     path = "/home/${var.admin_username}/.ssh/authorized_keys"
-    key_data = file("~/.az/pem/test_keys.pub")
+    key_data = file("~/.az/pem/personal-northeurope.pub")
     }
 
   }

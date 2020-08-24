@@ -7,12 +7,12 @@
     - role: call_terraform
 
 # Common server configuration
-# name: Config server
-# hosts: all
-# remote_user: azure_user
-# become: True
-# roles:
-#   - role: user
+-  name: Config server
+   hosts: all
+   remote_user: azure_user
+   become: True
+   roles:
+     - role: users
 #   - role: server_common
 #   - role: install_azure_cli
 #

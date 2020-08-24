@@ -55,6 +55,7 @@ module "compute" {
   vm_size = var.vm_size
   default_tags = var.default_tags
   admin_username = var.admin_username
+  key_name = var.key_name
 }
 
 
